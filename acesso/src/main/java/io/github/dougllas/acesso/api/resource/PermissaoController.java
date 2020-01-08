@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -26,11 +27,11 @@ public class PermissaoController {
     private final PermissaoMapper mapper;
 
     @GetMapping
-    public Page<PermissaoDTO> find( PermissaoDTO filter, PageRequest pageRequest){
+    public Page<PermissaoDTO> find( PermissaoDTO filter, Pageable pageable){
         Permissao entityFilter = mapper.toEntity(filter);
-        Page<Permissao> result = service.find( entityFilter, pageRequest );
+        Page<Permissao> result = service.find( entityFilter, pageable );
         List<PermissaoDTO> list = result.getContent().stream().map(p -> mapper.toDTO(p)).collect(Collectors.toList());
-        return new PageImpl<>(list, pageRequest, result.getTotalElements());
+        return new PageImpl<>(list, pageable, result.getTotalElements());
     }
 
     @PostMapping

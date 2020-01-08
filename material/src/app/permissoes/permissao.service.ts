@@ -13,12 +13,18 @@ export class PermissaoService {
 
   constructor(
     private http: HttpClient,
-    @Inject('API_BASEURL') private baseUrl: string
+    @Inject('API_BASEURL') private baseUrl: string,
     ) { 
     this.url = `${baseUrl}/permissoes`
   }
 
   salvar( permissao: Permissao ) : Observable<Permissao>{
     return this.http.post<Permissao>(this.url, permissao);
+  }
+
+  consultar( filtro: Permissao ) : Observable<any>{
+    let queryParams = '?page=0&size=10'
+    
+    return this.http.get<any>(`${this.url}${queryParams}`);
   }
 }

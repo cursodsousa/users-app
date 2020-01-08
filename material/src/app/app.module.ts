@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card'
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatDialogModule } from '@angular/material/dialog'
+import { MatTableModule } from '@angular/material/table'
 
 import { HttpClientModule } from '@angular/common/http'
 
@@ -37,7 +38,8 @@ import { ListagemComponent as PermissoesListView } from './permissoes/listagem/l
     MatCardModule,
     MatGridListModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [
     { provide: 'API_BASEURL', useValue: 'http://localhost:8080' }

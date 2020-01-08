@@ -1,1 +1,52 @@
-<p>listagem works!</p>
+<form #permsForm="ngForm" (ngSubmit)="consultar($event);">
+    <mat-card>
+        <mat-card-title>Consulta</mat-card-title>
+        <mat-grid-list cols="1" rowHeight="60px">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input matInput 
+                           placeholder="Identificador"
+                           [(ngModel)]="filtro.identificacao" 
+                           name="identificacao" />
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input matInput 
+                           placeholder="Descrição"
+                           [(ngModel)]="filtro.descricao" 
+                           name="descricao" />
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <button color="primary" 
+                        type="submit" 
+                        mat-button>
+                        Consultar
+                </button>
+              </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card>
+</form>
+
+<table mat-table [dataSource]="permissoes" class="mat-elevation-z2">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let permissao"> {{permissao.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="identificacao">
+      <th mat-header-cell *matHeaderCellDef> Identificação </th>
+      <td mat-cell *matCellDef="let permissao"> {{permissao.identificacao}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef> Descrição </th>
+      <td mat-cell *matCellDef="let permissao"> {{permissao.descricao}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>

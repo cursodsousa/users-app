@@ -3,6 +3,7 @@ package io.github.dougllas.acesso.service;
 import io.github.dougllas.acesso.model.entity.Permissao;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
 
@@ -16,5 +17,5 @@ public interface PermissaoService {
 
     void deletar(Permissao entity);
 
-    Page<Permissao> find(Permissao entityFilter, PageRequest pageRequest);
+    Page<Permissao> find(Permissao entityFilter, Pageable pageable);
 }

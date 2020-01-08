@@ -11,9 +11,7 @@ export class LoginComponent {
   credentials: Credentials  
 
   constructor( 
-    private router: Router
-    
-    ){
+    private router: Router ){
      this.credentials = new Credentials('','');
   }
 

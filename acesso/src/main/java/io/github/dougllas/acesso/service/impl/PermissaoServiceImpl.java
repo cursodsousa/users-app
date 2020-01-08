@@ -4,10 +4,7 @@ import io.github.dougllas.acesso.model.entity.Permissao;
 import io.github.dougllas.acesso.model.repository.PermissaoRepository;
 import io.github.dougllas.acesso.service.PermissaoService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -39,8 +36,8 @@ public class PermissaoServiceImpl implements PermissaoService {
     }
 
     @Override
-    public Page<Permissao> find(Permissao entityFilter, PageRequest pageRequest) {
+    public Page<Permissao> find( Permissao entityFilter, Pageable pageable ) {
         ExampleMatcher exampleMatcher = ExampleMatcher.matching().withIgnoreNullValues().withIgnoreCase().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
-        return repository.findAll(  Example.of(entityFilter, exampleMatcher), pageRequest );
+        return repository.findAll(  Example.of(entityFilter, exampleMatcher), pageable );
     }
 }
