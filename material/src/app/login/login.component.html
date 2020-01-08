@@ -1,0 +1,30 @@
+<form #formLogin="ngForm" (submit)="login($event)">
+
+    <mat-card>
+      <mat-card-title>Login</mat-card-title>
+      <div class="row">
+
+          <mat-form-field>
+            <input matInput 
+                   placeholder="User name" 
+                   #username="ngModel"
+                   required minlength="4"
+                   [(ngModel)]="credentials.username" 
+                   name="username" />
+          </mat-form-field>
+  
+          <mat-form-field>
+            <input matInput 
+                   type="password" 
+                   placeholder="Password" 
+                   [(ngModel)]="credentials.password" name="password" />
+          </mat-form-field>
+  
+        <div>
+          <button color="accent"  type="submit" mat-button>Enviar</button>
+        </div>
+
+      </div>
+      
+    </mat-card>
+</form>

@@ -1,0 +1,30 @@
+<form #permsForm="ngForm" (ngSubmit)="submit($event);">
+    <mat-card>
+        <mat-card-title>Permissão</mat-card-title>
+        <mat-grid-list cols="1" rowHeight="60px">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input matInput 
+                           placeholder="Identificador"
+                           [(ngModel)]="permissao.identificacao" 
+                           name="identificacao" />
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input matInput 
+                           placeholder="Descrição"
+                           [(ngModel)]="permissao.descricao" 
+                           name="descricao" />
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <button color="primary" 
+                        type="submit" 
+                        mat-button>
+                        Enviar
+                </button>
+              </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card>
+</form>
